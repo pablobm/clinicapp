@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      resources :doctors
+      resources :appointments
+      resources :categories
+      resources :prescriptions
+
+      root to: "users#index"
+    end
   
   devise_for :users
   devise_for :doctors  
