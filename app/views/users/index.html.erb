@@ -1,0 +1,16 @@
+<h1 class="display-3 text-center main-title mt-4">Patients public page</h1>
+
+<%= render "shared/logout_file" %>
+
+<div class="row featurette card-body mt-4">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Hello dear <%= current_user.full_name %></h2>
+    <p class="lead">Main Text here </p>
+    <div class="custom-btn-image">
+      <%= link_to "Enter your profile", user_path(@user), class: "btn btn-success btn-lg text-white" %>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <%= image_tag "user-empty.jpg", height: 400, width: 500, class: 'login-img img-round' %>
+  </div>
+</div>

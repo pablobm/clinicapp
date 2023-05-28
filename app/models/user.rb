@@ -10,5 +10,12 @@ class User < ApplicationRecord
   validates :phone, presence: true, uniqueness: true
   validates :full_name, presence: true
 
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
 
 end

@@ -54,6 +54,8 @@ gem 'i18n', '~> 1.12'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "byebug"
+  gem "rspec-rails"
 end
 
 group :development do
