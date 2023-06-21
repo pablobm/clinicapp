@@ -1,0 +1,51 @@
+<%= link_to 'Back', user_path(@user.id), class: "btn btn-primary btn-lg" %>
+
+<h1 class="display-3 text-center main-title mt-4">All appointments</h1>
+
+<div class="row featurette card-body">
+  <div class="col-md-12">
+    <h2 class="display-5 font-italic">Hello dear <%= current_user.full_name %></span></h2>
+    <% if @appointments.blank? %>
+      <p>You don't have any appointment</p>
+    <% else %>
+      <% @appointments.each do |appointment| %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th class="table-success">Descriptions</th>
+            <th class="table-danger">Your date</th>
+            <th class="table-warning">Name your doctor</th>
+            <th class="table-success">Email your doctor</th>
+            <th class="table-warning">Phone your doctor</th>
+            <th class="table-danger">Cancel appointments</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="table-success">
+              Appointment
+            </td>
+            <td class="table-danger">
+              <%= appointment.appointment_date&.to_s(:long) %>
+            </td>
+            <td class="table-warning">
+              <%= appointment.doctor.full_name %>
+            </td>
+            <td class="table-success">
+              <%= appointment.doctor.email %>
+            </td>
+            <td class="table-warning">
+              <%= appointment.doctor.phone %>
+            </td>
+            <td class="table-danger">
+              <div class="cancel-appointment">
+                <%= button_to "Cancel this appointment", @appointment, 'method': :delete, class: 'btn btn-secondary text-light rounded-2 my-2' %>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<%= link_to 'Back', user_path(@user.id), class: "btn btn-primary btn-lg" %>
+
+<h1 class="display-3 text-center main-title mt-4">Arrange an appointment</h1>
+
+<div class="row featurette card-body mt-4">
+  <div class="col-md-12">
+    <h2 class="display-6 font-italic">Add please new appointment </h2>
+    <%= form_with model: @appointment, url: appointments_path, class: "card left" do |f| %>
+      <%= f.label :appointment_date, hidden: true, class: "form-label" %> <br>
+      <span class="datetime pl-4"><%= f.datetime_select :appointment_date, ampm: true, :class => "form-control" %></span>
+      <%= f.hidden_field :user_id %>
+      <%= f.hidden_field :doctor_id, value: @appointment.doctor.id %>
+      <% @appointment.user_id = current_user.id %>
+      <%= f.submit "Submit", class: 'btn btn-primary btn-lg mt-4' %>
+    <% end %>
+  </div>
+</div>

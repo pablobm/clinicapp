@@ -30,6 +30,9 @@ gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'jquery-rails'
+gem 'importmap-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -54,7 +57,7 @@ gem 'i18n', '~> 1.12'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  gem "byebug"
+  gem "byebug", platform: :mri
   gem "rspec-rails"
 end
 
@@ -72,5 +75,7 @@ end
   gem "devise"
   gem "administrate"
   gem "cancancan"
+  gem "factory_bot_rails"
+  gem "faker"
 
 
