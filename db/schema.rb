@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_104901) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_23_092250) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_104901) do
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -51,6 +52,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_104901) do
     t.datetime "updated_at", null: false
     t.string "phone"
     t.string "full_name"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_doctors_on_category_id"
     t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
   end
@@ -76,4 +79,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_104901) do
 
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "users"
+  add_foreign_key "doctors", "categories"
 end
