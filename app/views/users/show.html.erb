@@ -18,15 +18,15 @@
         <% @display_doctors.each do |doctor| %>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              <% if doctor.main_image? %>
-                <%= image_tag doctor.main_image.url, height: 400, width: 400, class: 'login-img img-round' %>
-              <% else %>
-                <%= image_tag "user-empty.jpg", height: 200, class: 'login-img' %>
-              <% end %>
+              <%# <% if doctor.main_image? %>
+                <%# <%= image_tag doctor.main_image.url, height: 400, width: 400, class: 'login-img img-round' %> 
+              <%# <% else %> 
+                <%# <%= image_tag "user-empty.jpg", height: 200, class: 'login-img' %> 
+              <%# <% end %> 
+
               <div class="card-body">
                 <p class="card-text"><strong>Doctor:</strong> <%= doctor.full_name %></p>
-                <p class="card-text"><strong>Category:</strong> <%= doctor.category&.name %></p>
-                <p class="card-text"><strong>Appointments:</strong> <%= doctor.appointments&.count %></p>
+                <p class="card-text"><strong>Category:</strong> <%= doctor.category&.name%></p>
                 <p>
                   <%= link_to('Arrange an appointment', new_appointment_path(doctor_id: doctor.id), class: 'btn btn-primary') %>
                 </p>

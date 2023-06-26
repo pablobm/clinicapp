@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :prescriptions
       resources :admin_users
 
-      root to: 'admin#index'
+      root to: 'admin_users#index'
     end
   
   # devise_for :users
@@ -41,6 +41,10 @@ Rails.application.routes.draw do
 
   authenticated :doctor do
     root 'doctors#index', as: :authenticated_doctor_root
+  end
+
+  authenticated :admin_user do
+    root 'admin_users#index', as: :authenticated_admin_user_root
   end
 
   resources :users
