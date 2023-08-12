@@ -10,10 +10,7 @@ Rails.application.routes.draw do
       root to: 'admin_users#index'
     end
   
-  # devise_for :users
-  # devise_for :doctors  
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  
   get 'admin/users/index'
   get 'admin/users/show'
 
@@ -28,7 +25,8 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     registrations: 'users/registrations',
   }
-
+  
+  
   devise_for :doctors, controllers: {
     sessions: 'doctors/sessions',
     passwords: 'doctors/passwords',

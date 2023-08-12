@@ -1,24 +1,16 @@
 <ul class="navbar-nav mt-5 text-right">
   <% if user_signed_in? %>
     <li class="nav-item">
-      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-primary btn-lg') %>
-      <%# GET /users/sign_out -> Rails checks which route matches... it is "GET /users/:id" -> UsersController#show ... User.find("sign_out")
-      typical GET /blah/:id -> BlahsController#show -> Blah.find(params[:id]) -----> params[:id] == "sign_out" ---> Blah.find("sign_out")
-      routes file:
-      resources :foos -- shortcut for --> "GET /foos/:id":show, "GET /foos":index, "POST /foos":create, etc..., "DELETE /foos/:id":destroy
-      Actual problem:
-      missing JS tag in /views/layout/application.html.erb -- `javascript_include_tag(:application)` is missing
- %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn btn-primary btn-lg') %>
 
-      
     </li>
   <% elsif admin_user_signed_in? %>
     <li class="nav-item">
-      <%= link_to('Logout', destroy_admin_user_session_path, method: :delete, class: 'btn btn-primary btn-lg') %>
+      <%= link_to('Logout', destroy_admin_user_session_path, method: :delete, data: { turbo: false }, class: 'btn btn-primary btn-lg') %>
     </li>
   <% elsif doctor_signed_in? %>
     <li class="nav-item">
-      <%= link_to('Logout', destroy_doctor_session_path, method: :delete, class: 'btn btn-primary btn-lg') %>
+      <%= link_to('Logout', destroy_doctor_session_path, method: :delete, data: { turbo: false }, class: 'btn btn-primary btn-lg') %>
     </li>
   <% end %>
 </ul>

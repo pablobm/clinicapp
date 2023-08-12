@@ -1,0 +1,72 @@
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="display-3">Doctor's profile</h1>
+      <h2>Dear doctor <%= current_doctor.full_name %>!</h2>
+      <h3 class="text-primary"> <%= current_doctor.category&.name %> </h3>
+      <p class="lead">Work please with opened appointments</p>
+      <p>
+        <%= link_to('Back', root_path, class: 'btn btn-secondary my-2') %>
+        <%= link_to('Prescriptions', prescriptions_path, class: 'btn btn-primary') %>
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row featurette card-body mb-4">
+      <div class="col-md-12">
+        <h1 class="text-center mb-4">All appointments</h1>
+        <% if @appointments.blank? %>
+          <h4 class="font-italic">You don't have any appointment</h4>
+        <% else %>
+          <div class="album py-5 bg-light">
+            <div class="container">
+              <div class="row">
+                <% @appointments.each do |appointment| %>
+                  <% if appointment.prescription %>
+                    <div class="col-md-4">
+                      <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                          <h4 class="mx-1"><strong>Prescription</strong></h4>
+                          <p class="pt-3"><strong>Appointment Status: </strong>
+                            <strong class="text-danger">Closed</strong></p>
+                          <p class="card-text"><strong>User: </strong> <%= appointment.user.full_name %></p>
+                          <p class="card-text">
+                            <strong>Appointment date: </strong> <%= appointment.appointment_date&.to_s(:long) %></p>
+                          <%= link_to('Edit', prescription_path(appointment.prescription.id), class: 'btn btn-outline-secondary my-2') %>
+                          <br>
+                          <small class="font-italic text-grey"><%= distance_of_time_in_words(appointment.created_at, Time.now) %>
+                            ago
+                          </small>
+
+                        </div>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="col-md-4">
+                      <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                          <h4 class="mx-1"><strong>Prescription</strong></h4>
+                          <p class="mt-4"><span>Appointment Status:</span> <strong class="text-primary">Opened</strong>
+                          </p>
+                          <p class="card-text"><span>User:</span> <%= appointment.user.full_name %></p>
+                          <p class="card-text">
+                            <span>Appointment date:</span> <%= appointment.appointment_date&.to_s(:long) %></p>
+                          <%= link_to('Create', new_prescription_path(appointment_id: appointment.id), class: 'btn btn-primary my-2') %>
+                          <br>
+                          <small class="font-italic text-grey"><%= distance_of_time_in_words(appointment.created_at, Time.now) %>
+                            ago
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

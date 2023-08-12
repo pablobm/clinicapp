@@ -1,0 +1,17 @@
+<h1 class="display-3 text-center main-title mt-4">Doctors public page</h1>
+
+<%= render '/shared/logout_file' %>
+
+<div class="row featurette card-body mt-4">
+  <div class="col-md-7">
+    <h2 class="featurette-heading">Hello dear <%= current_doctor.full_name %></h2>
+    <p class="lead">For more than 100 years, Our Medical Center has been driven by a commitment to care for all people,
+      regardless of their ability to pay, providing not only traditional medical care, but also programs and services
+      that wrap around that care to enhance overall health. All of this supports our mission to provide exceptional
+      care, without exception. </p>
+    <div class="custom-btn-image">
+      <%= link_to "Enter your profile", doctor_path(@doctor), class: "btn btn-success btn-lg text-white" %>
+    </div>
+  </div>
+  
+</div>

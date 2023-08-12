@@ -1,7 +1,7 @@
 class DoctorsController < ApplicationController
 before_action :set_doctor_item, only: %i[update]
   before_action :authenticate_doctor!
-
+  
   def index
     @doctor = current_doctor
   end
