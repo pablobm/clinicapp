@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Doctor, type: :model do
-  subject { Doctor.new(full_name: "Robert", phone: "1234567890", email: "doc1@gmail.com") }
+  subject { FactoryBot.build(:doctor) }
+
   it "is valid with valid attributes" do
     expect(subject).to be_valid
   end
