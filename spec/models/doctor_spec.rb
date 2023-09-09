@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
-   subject { Doctor.new(full_name: "Robert", phone: "1234567890", email: "doc1@gmail.com" )}
+  let(:valid_attributes) do
+    {
+      full_name: "Robert",
+      phone: "1234567890",
+      category: create(:category, name: 'Therapist'),
+      email: "doc1@gmail.com",
+      password: "qwerty"
+    }
+  end
+
+   subject { Doctor.new(valid_attributes)}
   it "is valid with valid attributes" do
     expect(subject).to be_valid
   end
@@ -23,10 +33,9 @@ RSpec.describe Doctor, type: :model do
   it "is not valid if the phone number is not all digits" do
     expect( (subject.phone).match? (/\A-?\d+\Z/) ).to eq(true)
   end
+  
+it { should validate_presence_of(:phone) }
+it { should allow_value('1234567890').for(:phone) }
+it { should_not allow_value('invalid_phone').for(:phone) }
 
-
- 
-it "is not valid without a phone number"    
-it "is not valid if the phone number is not 10 chars"   
-it "is not valid if the phone number is not all digits"
 end
