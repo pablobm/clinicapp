@@ -1,24 +1,19 @@
-# README
+App for clinic management, obviously.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Credits:
 
-Things you may want to cover:
+Admin
+    email: admin@example.com
+    phone: 1212121212
+    password: qwerty
 
-* Ruby version
+User
+    email: sample1@gmail.com
+    phone: 123456789
+    password: qwerty
 
-* System dependencies
+Doctor
+    email: doc1@gmail.com
+    phone: 1234567890
+    password: qwerty
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

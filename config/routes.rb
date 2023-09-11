@@ -7,12 +7,9 @@ Rails.application.routes.draw do
       resources :prescriptions
       resources :admin_users
 
-      root to: 'admin_users#index'
+      root to: 'admin#index'
     end
   
-  
-  get 'admin/users/index'
-  get 'admin/users/show'
 
   devise_for :admin_users, controllers: {
     sessions: 'admin_users/sessions',
@@ -49,7 +46,7 @@ Rails.application.routes.draw do
   resources :doctors
   resources :appointments
   resources :prescriptions
-  resources :admin_users
+  resources :admin_users, controller: 'admin/admin', module: 'admin'
 
 
   match '/404', to: 'errors#not_found', via: :all
